@@ -183,14 +183,45 @@ class UI {
     // Affiche les conséquences d'un choix
     displayConsequences(text, visualType = null) {
         this.elements.consequenceText.innerHTML = `<p>${text}</p>`;
-        
+
         // Animation du texte
         const paragraph = this.elements.consequenceText.querySelector('p');
         paragraph.style.animationDelay = '0.2s';
-        
-        // Affichage visuel (à implémenter selon les besoins)
+
         if (visualType) {
-            this.elements.consequenceVisual.innerHTML = `<div class="consequence-effect ${visualType}"></div>`;
+            const emojiMap = {
+                spaghetti: '🍝',
+                cow: '🐄',
+                energy: '⚡',
+                gravity: '⬆️',
+                clone: '👥',
+                cube: '🟥',
+                plant: '🌿',
+                hat: '🐶',
+                wifi: '📶',
+                confetti: '🎊',
+                magic: '✨',
+                giant: '⛰️',
+                truth: '🌀',
+                chicken: '🐔',
+                color: '🌈'
+            };
+
+            const effectDiv = document.createElement('div');
+            effectDiv.className = `consequence-effect ${visualType}`;
+            const emoji = emojiMap[visualType] || '✨';
+
+            for (let i = 0; i < 20; i++) {
+                const span = document.createElement('span');
+                span.className = 'emoji';
+                span.textContent = emoji;
+                span.style.left = Math.random() * 100 + '%';
+                span.style.animationDelay = (Math.random() * 2) + 's';
+                effectDiv.appendChild(span);
+            }
+
+            this.elements.consequenceVisual.innerHTML = '';
+            this.elements.consequenceVisual.appendChild(effectDiv);
         } else {
             this.elements.consequenceVisual.innerHTML = '';
         }

@@ -5,6 +5,7 @@ const DIVINE_CHOICES = [
     {
         id: 1,
         text: "Faire pleuvoir des spaghettis sur toute la planète",
+        visual: "spaghetti",
         consequences: {
             immediate: "Une pluie de spaghettis s'abat sur votre mini-planète ! Les habitants sont d'abord surpris, puis commencent à collecter cette manne céleste.",
             longTerm: "Les habitants ont développé toute une culture autour des spaghettis. Des temples en forme de passoires géantes ont été construits et le 'Spaghetisme' est devenu la religion principale.",
@@ -14,6 +15,7 @@ const DIVINE_CHOICES = [
     {
         id: 2,
         text: "Mettre les vaches au pouvoir",
+        visual: "cow",
         consequences: {
             immediate: "Les vaches se tiennent soudain sur leurs pattes arrière et commencent à parler ! Elles organisent rapidement un coup d'État pacifique.",
             longTerm: "Le gouvernement bovin a instauré une société étonnamment stable. Le lait est devenu la monnaie officielle et les prairies sont désormais des zones protégées.",
@@ -23,6 +25,7 @@ const DIVINE_CHOICES = [
     {
         id: 3,
         text: "Transformer les océans en Red Bull",
+        visual: "energy",
         consequences: {
             immediate: "Les océans prennent une teinte bleu-argentée caractéristique. Les poissons nagent à une vitesse folle !",
             longTerm: "Toute la faune marine est hyperactive. Les habitants côtiers ne dorment plus et ont construit des villes entières en une semaine. Cependant, les écosystèmes marins sont en danger.",
@@ -32,6 +35,7 @@ const DIVINE_CHOICES = [
     {
         id: 4,
         text: "Inverser la gravité pendant 24 heures",
+        visual: "gravity",
         consequences: {
             immediate: "Tout le monde et tout flotte soudainement vers le ciel ! Les habitants s'accrochent désespérément à tout ce qui est fixé au sol.",
             longTerm: "Les habitants ont développé une architecture révolutionnaire avec des bâtiments suspendus. Une nouvelle discipline sportive de 'natation aérienne' est devenue populaire.",
@@ -41,6 +45,7 @@ const DIVINE_CHOICES = [
     {
         id: 5,
         text: "Donner à chaque habitant un clone maléfique",
+        visual: "clone",
         consequences: {
             immediate: "Des clones avec de petites moustaches apparaissent à côté de chaque habitant. La confusion est totale !",
             longTerm: "Étonnamment, la plupart des clones maléfiques se sont révélés être d'excellents comptables. Le taux de criminalité a augmenté, mais l'économie est florissante.",
@@ -50,6 +55,7 @@ const DIVINE_CHOICES = [
     {
         id: 6,
         text: "Remplacer toutes les roues par des cubes",
+        visual: "cube",
         consequences: {
             immediate: "Toutes les roues se transforment instantanément en cubes. Les véhicules s'arrêtent dans un concert de secousses et de bruits étranges.",
             longTerm: "Les habitants ont développé un système de transport basé sur le glissement et le rebond. Les routes sont maintenant faites de trampolines et de tobogans.",
@@ -59,6 +65,7 @@ const DIVINE_CHOICES = [
     {
         id: 7,
         text: "Faire parler les plantes (et elles sont très bavardes)",
+        visual: "plant",
         consequences: {
             immediate: "Toutes les plantes commencent à parler en même temps, partageant leurs pensées, leurs rêves et surtout leurs plaintes sur le manque d'eau.",
             longTerm: "Les forêts sont devenues des zones de méditation interdites car trop bruyantes. L'agriculture est devenue une profession thérapeutique, les fermiers passant leur journée à écouter les problèmes de leurs cultures.",
@@ -68,6 +75,7 @@ const DIVINE_CHOICES = [
     {
         id: 8,
         text: "Transformer tous les chapeaux en animaux de compagnie vivants",
+        visual: "hat",
         consequences: {
             immediate: "Les chapeaux s'animent soudainement ! Certains aboient, d'autres miaulent, créant une cacophonie sur les têtes des habitants.",
             longTerm: "Une nouvelle mode est née : les coiffures-animaux. Les salons de coiffure proposent maintenant des 'coupes-chiots' et des 'brushings-perroquets'.",
@@ -77,6 +85,7 @@ const DIVINE_CHOICES = [
     {
         id: 9,
         text: "Installer un WiFi universel, mais qui ne fonctionne que quand on danse",
+        visual: "wifi",
         consequences: {
             immediate: "Des routeurs WiFi apparaissent partout, mais les habitants découvrent rapidement qu'ils doivent danser pour maintenir la connexion.",
             longTerm: "La société est devenue incroyablement en forme. Les réunions de travail sont des dance-floors et les cafés ressemblent à des discothèques permanentes.",
@@ -86,6 +95,7 @@ const DIVINE_CHOICES = [
     {
         id: 10,
         text: "Remplacer la pluie par des confettis",
+        visual: "confetti",
         consequences: {
             immediate: "Les nuages déversent des confettis multicolores au lieu d'eau. C'est festif, mais les plantes semblent confuses.",
             longTerm: "Une grave sécheresse a frappé la planète, mais l'industrie du recyclage de confettis est florissante. Les habitants ont développé des systèmes complexes pour collecter la rosée matinale.",
@@ -95,6 +105,7 @@ const DIVINE_CHOICES = [
     {
         id: 11,
         text: "Donner à tous les animaux la capacité de faire des tours de magie",
+        visual: "magic",
         consequences: {
             immediate: "Les animaux commencent à faire apparaître et disparaître des objets. Les zoos sont pris d'assaut !",
             longTerm: "Les cirques animaliers dominent le divertissement mondial. Certains animaux sont devenus plus riches que leurs anciens propriétaires et vivent dans des manoirs.",
@@ -104,6 +115,7 @@ const DIVINE_CHOICES = [
     {
         id: 12,
         text: "Transformer toutes les montagnes en géants endormis",
+        visual: "giant",
         consequences: {
             immediate: "Les montagnes prennent lentement forme humanoïde et commencent à ronfler doucement. Le sol tremble légèrement.",
             longTerm: "Le tourisme d'alpinisme a été remplacé par des 'visites sur la pointe des pieds'. Des villes entières se sont spécialisées dans la fabrication de boules Quies géantes.",
@@ -113,6 +125,7 @@ const DIVINE_CHOICES = [
     {
         id: 13,
         text: "Faire en sorte que les mensonges rendent temporairement invisible",
+        visual: "truth",
         consequences: {
             immediate: "Les gens commencent à disparaître au milieu de conversations, surtout les politiciens lors de discours.",
             longTerm: "La société est devenue étonnamment honnête. Les entretiens d'embauche sont beaucoup plus courts, et les rendez-vous amoureux beaucoup plus gênants.",
@@ -122,6 +135,7 @@ const DIVINE_CHOICES = [
     {
         id: 14,
         text: "Remplacer tous les instruments de musique par des poulets vivants",
+        visual: "chicken",
         consequences: {
             immediate: "Les concerts sont interrompus alors que les musiciens se retrouvent soudain avec des poulets dans les mains au lieu de leurs instruments.",
             longTerm: "Une nouvelle forme de musique appelée 'Pouletphonie' est devenue le genre musical dominant. Les poulets de concert se vendent à prix d'or.",
@@ -131,6 +145,7 @@ const DIVINE_CHOICES = [
     {
         id: 15,
         text: "Faire en sorte que les gens changent de couleur selon leur humeur",
+        visual: "color",
         consequences: {
             immediate: "Les habitants commencent à changer de couleur comme des caméléons émotionnels. Les disputes deviennent très colorées !",
             longTerm: "Les vêtements transparents sont devenus la norme pour ne pas cacher son 'aura émotionnelle'. Les thérapies de groupe ressemblent à des arcs-en-ciel vivants.",
