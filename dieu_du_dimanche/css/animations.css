@@ -96,6 +96,16 @@
     animation: highlightChoice 0.5s;
 }
 
+@keyframes decisionSparkle {
+    0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
+    50% { box-shadow: 0 0 10px 5px rgba(255,255,255,0.7); }
+    100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+}
+
+.choice-btn.decision-anim {
+    animation: decisionSparkle 0.6s ease-out;
+}
+
 /* Animation des conséquences */
 @keyframes fadeInUp {
     from {

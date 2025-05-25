@@ -220,3 +220,24 @@ const PLANET_ELEMENTS = {
         { name: "unicorn", emoji: "🦄", threshold: 80 }
     ]
 };
+
+// Classes de dieu disponibles
+const GOD_CLASSES = [
+    { id: "createur", name: "Créateur", modifiers: { nature: 5, civilization: 5 } },
+    { id: "destructeur", name: "Destructeur", modifiers: { chaos: 5 } },
+    { id: "bienfaiteur", name: "Bienfaiteur", modifiers: { happiness: 5 } }
+];
+
+// Artefacts pouvant être obtenus
+const ARTIFACTS = [
+    { id: "pantoufles_sacrees", name: "Pantoufles Sacrées", description: "Augmente les gains d'XP de 10%" },
+    { id: "biscuit_eternel", name: "Biscuit Éternel", description: "Réduit le chaos de 5 lors de son utilisation" }
+];
+
+// Quêtes simples pour le système RPG
+const QUESTS = [
+    { id: "develop", description: "Atteindre 80% de civilisation", condition: { stat: "civilization", min: 80 }, reward: { xp: 20 } },
+    { id: "nature", description: "Atteindre 80% de nature", condition: { stat: "nature", min: 80 }, reward: { xp: 20, artifact: "pantoufles_sacrees" } }
+];
+
+const XP_PER_CHOICE = 10;

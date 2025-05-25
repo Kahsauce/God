@@ -44,7 +44,7 @@ class EventManager {
     }
     
     // Applique les conséquences d'un choix
-    applyChoice(choiceId) {
+    applyChoice(choiceId, godClass = null) {
         const choice = this.currentChoices.find(c => c.id === choiceId);
         if (!choice) return null;
         
@@ -59,11 +59,18 @@ class EventManager {
         });
         
         // Applique les effets sur la planète
-        const newStats = this.planet.updateStats(choice.consequences);
-        
+        let consequences = JSON.parse(JSON.stringify(choice.consequences));
+        if (godClass && godClass.modifiers) {
+            Object.keys(godClass.modifiers).forEach(stat => {
+                consequences.stats[stat] = (consequences.stats[stat] || 0) + godClass.modifiers[stat];
+            });
+        }
+
+        const newStats = this.planet.updateStats(consequences);
+
         return {
             choice: choice,
-            consequences: choice.consequences,
+            consequences: consequences,
             newStats: newStats
         };
     }
