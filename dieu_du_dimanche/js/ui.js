@@ -22,6 +22,8 @@ class UI {
             // Écran de jeu
             godLevel: document.getElementById('god-level'),
             dayCounter: document.getElementById('day-counter'),
+            xpCounter: document.getElementById('xp-counter'),
+            questText: document.getElementById('quest-text'),
             natureBar: document.getElementById('nature-bar'),
             civilizationBar: document.getElementById('civilization-bar'),
             chaosBar: document.getElementById('chaos-bar'),
@@ -29,6 +31,7 @@ class UI {
             menuBtn: document.getElementById('menu-btn'),
             planetElements: document.getElementById('planet-elements'),
             narrative: document.getElementById('narrative'),
+            inventory: document.getElementById('inventory'),
             nextSundayBtn: document.getElementById('next-sunday-btn'),
             
             // Écran de décision
@@ -124,6 +127,32 @@ class UI {
     // Met à jour le niveau du dieu
     updateGodLevel(levelName) {
         this.elements.godLevel.textContent = levelName;
+    }
+
+    // Met à jour l'XP du joueur
+    updateXP(xp) {
+        this.elements.xpCounter.textContent = xp;
+    }
+
+    // Met à jour la quête affichée
+    updateQuest(quest) {
+        if (quest) {
+            this.elements.questText.textContent = quest.description;
+        } else {
+            this.elements.questText.textContent = 'Aucune';
+        }
+    }
+
+    // Met à jour l'inventaire
+    updateInventory(items) {
+        this.elements.inventory.innerHTML = '';
+        items.forEach(it => {
+            const div = document.createElement('div');
+            const artifact = ARTIFACTS.find(a => a.id === it);
+            div.className = 'inventory-item';
+            div.textContent = artifact ? artifact.name : it;
+            this.elements.inventory.appendChild(div);
+        });
     }
     
     // Met à jour le texte narratif

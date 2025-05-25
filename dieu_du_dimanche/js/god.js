@@ -4,6 +4,11 @@ class GodManager {
     constructor() {
         this.level = 0; // Niveau de dieu (index dans GOD_LEVELS)
         this.daysPassed = 0;
+        this.xp = 0;
+        this.inventory = [];
+        this.godClass = GOD_CLASSES[0];
+        this.currentQuest = null;
+        this.completedQuests = [];
         this.achievements = {}; // Réalisations débloquées
         
         // Initialisation des réalisations
@@ -62,6 +67,10 @@ class GodManager {
         return {
             level: this.level,
             daysPassed: this.daysPassed,
+            xp: this.xp,
+            inventory: [...this.inventory],
+            currentQuest: this.currentQuest,
+            completedQuests: [...this.completedQuests],
             achievements: {...this.achievements},
             planetStats: {...planet.stats},
             planetElements: [...planet.elements],
@@ -80,6 +89,10 @@ class GodManager {
         // Charge les données du dieu
         this.level = gameState.level || 0;
         this.daysPassed = gameState.daysPassed || 0;
+        this.xp = gameState.xp || 0;
+        this.inventory = gameState.inventory || [];
+        this.currentQuest = gameState.currentQuest || null;
+        this.completedQuests = gameState.completedQuests || [];
         this.achievements = gameState.achievements || {};
         
         // Charge les données de la planète
@@ -96,7 +109,52 @@ class GodManager {
         // Charge les données de l'événement
         eventManager.currentDay = gameState.currentDay || 1;
         eventManager.isSunday = gameState.isSunday !== undefined ? gameState.isSunday : true;
-        
+
         return true;
+    }
+
+    // Ajoute de l'XP et retourne la valeur actuelle
+    addXP(amount) {
+        let bonus = 0;
+        if (this.inventory.includes('pantoufles_sacrees')) {
+            bonus = Math.floor(amount * 0.1);
+        }
+        this.xp += amount + bonus;
+        return this.xp;
+    }
+
+    // Ajoute un objet à l'inventaire
+    addItem(itemId) {
+        if (!this.inventory.includes(itemId)) {
+            this.inventory.push(itemId);
+        }
+    }
+
+    // Assigne une nouvelle quête aléatoire
+    assignQuest() {
+        const available = QUESTS.filter(q => !this.completedQuests.includes(q.id));
+        if (available.length === 0) return null;
+        const randomIndex = Math.floor(Math.random() * available.length);
+        this.currentQuest = available[randomIndex];
+        return this.currentQuest;
+    }
+
+    // Vérifie si la quête actuelle est accomplie
+    checkQuestCompletion(planet) {
+        if (!this.currentQuest) return null;
+        const cond = this.currentQuest.condition;
+        if (planet.stats[cond.stat] >= cond.min) {
+            this.completedQuests.push(this.currentQuest.id);
+            if (this.currentQuest.reward.xp) {
+                this.addXP(this.currentQuest.reward.xp);
+            }
+            if (this.currentQuest.reward.artifact) {
+                this.addItem(this.currentQuest.reward.artifact);
+            }
+            const finished = this.currentQuest;
+            this.currentQuest = null;
+            return finished;
+        }
+        return null;
     }
 }

@@ -49,11 +49,15 @@ function startNewGame() {
     planet = new Planet();
     eventManager = new EventManager(planet);
     godManager = new GodManager();
-    
+    godManager.assignQuest();
+
     // Met à jour l'interface
     ui.updateStats(planet.stats);
     ui.updateDayCounter(eventManager.currentDay);
     ui.updateGodLevel(godManager.getCurrentLevel().name);
+    ui.updateXP(godManager.xp);
+    ui.updateQuest(godManager.currentQuest);
+    ui.updateInventory(godManager.inventory);
     ui.updatePlanetElements(planet.elements);
     ui.updateNarrative("Bienvenue, ô Dieu en Pantoufles ! Votre mini-planète attend vos ordres divins.");
     
@@ -79,11 +83,17 @@ function continueGame() {
     
     // Charge l'état du jeu
     godManager.loadGameState(savedGame, planet, eventManager);
-    
+    if (!godManager.currentQuest) {
+        godManager.assignQuest();
+    }
+
     // Met à jour l'interface
     ui.updateStats(planet.stats);
     ui.updateDayCounter(eventManager.currentDay);
     ui.updateGodLevel(godManager.getCurrentLevel().name);
+    ui.updateXP(godManager.xp);
+    ui.updateQuest(godManager.currentQuest);
+    ui.updateInventory(godManager.inventory);
     ui.updatePlanetElements(planet.elements);
     ui.updateNarrative(planet.generateDescription());
     
@@ -104,14 +114,24 @@ function handleNextDay() {
         // Sinon, on avance simplement d'un jour
         const randomEvent = eventManager.advanceDay();
         godManager.daysPassed++;
+        godManager.addXP(XP_PER_CHOICE / 2);
         
         // Met à jour l'interface
         ui.updateDayCounter(eventManager.currentDay);
+        ui.updateXP(godManager.xp);
         
         // Vérifie si un événement aléatoire s'est produit
         if (randomEvent) {
             ui.displayConsequences(randomEvent.description);
             ui.showScreen('consequence');
+        }
+
+        const finishedQuest = godManager.checkQuestCompletion(planet);
+        if (finishedQuest) {
+            ui.showNotification(`Quête terminée : ${finishedQuest.description}`, 'achievement');
+            godManager.assignQuest();
+            ui.updateQuest(godManager.currentQuest);
+            ui.updateInventory(godManager.inventory);
         }
         
         // Vérifie si le joueur peut monter de niveau
@@ -140,16 +160,35 @@ function handleDivineChoice(choiceId) {
     console.log(`Choix divin sélectionné: ${choiceId}`);
     
     // Applique le choix
-    const result = eventManager.applyChoice(choiceId);
+    const result = eventManager.applyChoice(choiceId, godManager.godClass);
     if (!result) return;
+
+    // Animation sur le bouton choisi
+    const btn = ui.elements.choicesContainer.querySelector(`[data-choice-id="${choiceId}"]`);
+    if (btn) {
+        btn.classList.add('decision-anim');
+        setTimeout(() => btn.classList.remove('decision-anim'), 600);
+    }
     
-    // Incrémente le compteur de jours
+    // Incrémente le compteur de jours et ajoute de l'XP
     eventManager.advanceDay();
     godManager.daysPassed++;
+    godManager.addXP(XP_PER_CHOICE);
     
     // Affiche les conséquences immédiates
     ui.displayConsequences(result.consequences.immediate);
     ui.showScreen('consequence');
+
+    // Vérifie la quête en cours
+    const finishedQuest = godManager.checkQuestCompletion(planet);
+    if (finishedQuest) {
+        ui.showNotification(`Quête terminée : ${finishedQuest.description}`, 'achievement');
+        godManager.assignQuest();
+        ui.updateQuest(godManager.currentQuest);
+        ui.updateInventory(godManager.inventory);
+    }
+
+    ui.updateXP(godManager.xp);
     
     // Sauvegarde automatique
     saveGame();
@@ -171,6 +210,9 @@ function handleContinueAfterConsequence() {
     ui.updatePlanetElements(planet.elements);
     ui.updateStats(planet.stats);
     ui.updateNarrative(planet.generateDescription());
+    ui.updateXP(godManager.xp);
+    ui.updateQuest(godManager.currentQuest);
+    ui.updateInventory(godManager.inventory);
     
     // Vérifie si le joueur peut monter de niveau
     const levelUp = godManager.checkLevelUp();
