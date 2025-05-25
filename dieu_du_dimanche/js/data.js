@@ -253,6 +253,14 @@ const ARTIFACTS = [
 const QUESTS = [
     { id: "develop", description: "Atteindre 80% de civilisation", condition: { stat: "civilization", min: 80 }, reward: { xp: 20 } },
     { id: "nature", description: "Atteindre 80% de nature", condition: { stat: "nature", min: 80 }, reward: { xp: 20, artifact: "pantoufles_sacrees" } }
+    ,{ id: "chaos_total", description: "Atteindre 100% de chaos", condition: { stat: "chaos", min: 100 }, reward: { xp: 30 } }
+    ,{ id: "bonheur_total", description: "Atteindre 100% de bonheur", condition: { stat: "happiness", min: 100 }, reward: { xp: 30, artifact: "biscuit_eternel" } }
+    ,{ id: "harmonie", description: "Avoir toutes les stats au-dessus de 60%", condition: [
+        { stat: "nature", min: 60 },
+        { stat: "civilization", min: 60 },
+        { stat: "chaos", min: 60 },
+        { stat: "happiness", min: 60 }
+    ], reward: { xp: 40 } }
 ];
 
 const XP_PER_CHOICE = 10;

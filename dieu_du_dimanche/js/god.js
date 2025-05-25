@@ -142,8 +142,17 @@ class GodManager {
     // Vérifie si la quête actuelle est accomplie
     checkQuestCompletion(planet) {
         if (!this.currentQuest) return null;
+
         const cond = this.currentQuest.condition;
-        if (planet.stats[cond.stat] >= cond.min) {
+        let completed = false;
+
+        if (Array.isArray(cond)) {
+            completed = cond.every(c => planet.stats[c.stat] >= c.min);
+        } else {
+            completed = planet.stats[cond.stat] >= cond.min;
+        }
+
+        if (completed) {
             this.completedQuests.push(this.currentQuest.id);
             if (this.currentQuest.reward.xp) {
                 this.addXP(this.currentQuest.reward.xp);

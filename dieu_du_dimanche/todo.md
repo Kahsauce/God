@@ -16,6 +16,8 @@
 - [x] Développer les animations et effets visuels
 - [x] Créer une banque de choix absurdes
 - [x] Implémenter les événements aléatoires
+- [ ] Ajouter des arcs narratifs avec des choix majeurs
+- [ ] Étendre la liste de quêtes et de récompenses
 
 ## Tests et validation
 - [ ] Tester les fonctionnalités principales

@@ -52,13 +52,18 @@ dieu_du_dimanche/
 - Système de "mémoire" où les décisions passées influencent les options futures
 - Conséquences parfois totalement imprévisibles et absurdes
 
-### 4. Statistiques et progression
+### 4. Choix majeurs et arcs narratifs
+- Des quêtes proposent régulièrement des embranchements décisifs
+- Plusieurs décisions successives peuvent déclencher un arc narratif unique (utopie, apocalypse, etc.)
+- Chaque arc modifie durablement la planète et débloque des récompenses spécifiques
+
+### 5. Statistiques et progression
 - Tableau de bord divin avec statistiques humoristiques
 - Niveaux de divinité à débloquer (Dieu Stagiaire → Dieu Suprême)
 - Médailles et récompenses pour certaines combinaisons ou situations
 - Historique des décisions et leurs conséquences
 
-### 5. Sauvegarde et partage
+### 6. Sauvegarde et partage
 - Sauvegarde automatique locale (localStorage)
 - Option de sauvegarde en ligne (pour la version serveur)
 - Possibilité de partager sa planète sur les réseaux sociaux
