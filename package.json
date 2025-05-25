@@ -1,0 +1,11 @@
+{
+  "name": "dieu-du-dimanche",
+  "version": "1.0.0",
+  "description": "Prototype de jeu humoristique 'Dieu du Dimanche'",
+  "scripts": {
+    "start": "http-server dieu_du_dimanche"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
