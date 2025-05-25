@@ -1,0 +1,182 @@
+/* Responsive design pour Dieu du Dimanche */
+
+/* Tablettes */
+@media screen and (max-width: 1024px) {
+    .game-title {
+        font-size: 4rem;
+    }
+    
+    .tagline {
+        font-size: 1.3rem;
+    }
+    
+    .planet {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .hud {
+        padding: 10px;
+    }
+    
+    .stat-bar {
+        width: 80px;
+    }
+    
+    .stat-name {
+        width: 80px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Smartphones */
+@media screen and (max-width: 768px) {
+    .game-title {
+        font-size: 3rem;
+        text-shadow: 2px 2px 0 var(--primary-color), 
+                     4px 4px 0 var(--dark-color);
+    }
+    
+    .tagline {
+        font-size: 1.1rem;
+        padding: 0 20px;
+    }
+    
+    .menu-btn {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
+    
+    .planet {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .hud {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .god-info, .planet-stats {
+        width: 100%;
+    }
+    
+    .planet-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+    
+    .icon-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    
+    .decision-title, .consequence-title {
+        font-size: 2rem;
+    }
+    
+    .decision-intro, .consequence-text {
+        font-size: 1rem;
+    }
+    
+    .choice-btn {
+        font-size: 0.9rem;
+        padding: 12px 15px;
+    }
+    
+    .action-btn {
+        font-size: 1rem;
+        padding: 10px 25px;
+    }
+}
+
+/* Petits smartphones */
+@media screen and (max-width: 480px) {
+    .game-title {
+        font-size: 2.5rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    .menu-btn {
+        font-size: 0.9rem;
+        padding: 10px 25px;
+    }
+    
+    .planet {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .stat-icon {
+        font-size: 1rem;
+    }
+    
+    .stat-name {
+        width: 70px;
+        font-size: 0.7rem;
+    }
+    
+    .stat-bar {
+        width: 60px;
+    }
+    
+    .narrative {
+        font-size: 0.9rem;
+    }
+    
+    .decision-container, .consequence-container, .about-container {
+        padding: 20px;
+    }
+    
+    .decision-title, .consequence-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* Orientation paysage sur mobile */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .game-title {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    
+    .menu-container {
+        gap: 10px;
+    }
+    
+    .menu-btn {
+        padding: 8px 25px;
+    }
+    
+    .planet {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .action-panel {
+        padding: 10px;
+    }
+    
+    .narrative {
+        margin-bottom: 10px;
+    }
+    
+    .hud {
+        padding: 5px;
+    }
+    
+    .god-info, .planet-stats {
+        padding: 5px 10px;
+    }
+}

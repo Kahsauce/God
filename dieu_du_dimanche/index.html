@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dieu du Dimanche</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Écran d'accueil -->
+        <div id="welcome-screen" class="screen active">
+            <div class="clouds-container">
+                <div class="cloud cloud-1"></div>
+                <div class="cloud cloud-2"></div>
+                <div class="cloud cloud-3"></div>
+            </div>
+            <div class="title-container">
+                <h1 class="game-title">Dieu du Dimanche</h1>
+                <p class="tagline">Gérez votre mini-planète avec des décisions divines... et absurdes !</p>
+            </div>
+            <div class="menu-container">
+                <button id="new-game-btn" class="menu-btn">Nouvelle Partie</button>
+                <button id="continue-btn" class="menu-btn" disabled>Continuer</button>
+                <button id="about-btn" class="menu-btn">À Propos</button>
+            </div>
+            <div class="pantoufles"></div>
+        </div>
+
+        <!-- Écran principal du jeu -->
+        <div id="game-screen" class="screen">
+            <div class="hud">
+                <div class="god-info">
+                    <div class="god-level">Niveau: <span id="god-level">Dieu Stagiaire</span></div>
+                    <div class="day-counter">Jour: <span id="day-counter">1</span></div>
+                </div>
+                <div class="planet-stats">
+                    <div class="stat">
+                        <span class="stat-icon">🌱</span>
+                        <span class="stat-name">Nature</span>
+                        <div class="stat-bar"><div id="nature-bar" class="stat-fill" style="width: 50%"></div></div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">🏙️</span>
+                        <span class="stat-name">Civilisation</span>
+                        <div class="stat-bar"><div id="civilization-bar" class="stat-fill" style="width: 50%"></div></div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">🤪</span>
+                        <span class="stat-name">Chaos</span>
+                        <div class="stat-bar"><div id="chaos-bar" class="stat-fill" style="width: 20%"></div></div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">😊</span>
+                        <span class="stat-name">Bonheur</span>
+                        <div class="stat-bar"><div id="happiness-bar" class="stat-fill" style="width: 70%"></div></div>
+                    </div>
+                </div>
+                <button id="menu-btn" class="icon-btn">☰</button>
+            </div>
+
+            <div class="planet-container">
+                <div class="planet">
+                    <div class="planet-surface"></div>
+                    <div id="planet-elements" class="planet-elements"></div>
+                </div>
+            </div>
+
+            <div class="action-panel">
+                <div id="narrative" class="narrative">
+                    <p>Bienvenue, ô Dieu en Pantoufles ! Votre mini-planète attend vos ordres divins.</p>
+                </div>
+                <button id="next-sunday-btn" class="action-btn">Passer au Dimanche</button>
+            </div>
+        </div>
+
+        <!-- Écran de décision dominicale -->
+        <div id="decision-screen" class="screen">
+            <div class="decision-container">
+                <h2 class="decision-title">C'est Dimanche !</h2>
+                <p class="decision-intro">Que décidez-vous de faire aujourd'hui, Ô Dieu Tout-Puissant (en pantoufles) ?</p>
+                
+                <div class="choices-container">
+                    <!-- Les choix seront générés dynamiquement ici -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Écran de conséquences -->
+        <div id="consequence-screen" class="screen">
+            <div class="consequence-container">
+                <h2 class="consequence-title">Conséquences Divines</h2>
+                <div id="consequence-text" class="consequence-text">
+                    <!-- Le texte des conséquences sera inséré ici -->
+                </div>
+                <div id="consequence-visual" class="consequence-visual">
+                    <!-- Animation visuelle des conséquences -->
+                </div>
+                <button id="continue-to-game-btn" class="action-btn">Continuer</button>
+            </div>
+        </div>
+
+        <!-- Écran "À propos" -->
+        <div id="about-screen" class="screen">
+            <div class="about-container">
+                <h2>À Propos de Dieu du Dimanche</h2>
+                <p>Un jeu où vous incarnez un dieu en pantoufles qui gère une mini-planète avec des décisions absurdes chaque dimanche.</p>
+                <p>Développé avec ❤️ et beaucoup d'absurdité.</p>
+                <button id="back-to-menu-btn" class="action-btn">Retour au Menu</button>
+            </div>
+        </div>
+
+        <!-- Menu pause -->
+        <div id="pause-menu" class="overlay">
+            <div class="pause-container">
+                <h2>Menu</h2>
+                <button id="resume-btn" class="menu-btn">Reprendre</button>
+                <button id="save-btn" class="menu-btn">Sauvegarder</button>
+                <button id="quit-btn" class="menu-btn">Quitter</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/planet.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/god.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

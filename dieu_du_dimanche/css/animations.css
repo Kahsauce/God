@@ -1,0 +1,170 @@
+/* Animations pour Dieu du Dimanche */
+
+/* Animation des nuages */
+@keyframes floatCloud1 {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes floatCloud2 {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-20px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes floatCloud3 {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(15px); }
+    100% { transform: translateX(0); }
+}
+
+.cloud-1 {
+    animation: floatCloud1 15s infinite ease-in-out;
+}
+
+.cloud-2 {
+    animation: floatCloud2 18s infinite ease-in-out;
+}
+
+.cloud-3 {
+    animation: floatCloud3 20s infinite ease-in-out;
+}
+
+/* Animation du titre */
+@keyframes pulseTitle {
+    0% { transform: rotate(-2deg) scale(1); }
+    50% { transform: rotate(-2deg) scale(1.05); }
+    100% { transform: rotate(-2deg) scale(1); }
+}
+
+.game-title {
+    animation: pulseTitle 3s infinite ease-in-out;
+}
+
+/* Animation des pantoufles */
+@keyframes wigglePantoufles {
+    0% { transform: rotate(0); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+    100% { transform: rotate(0); }
+}
+
+.pantoufles {
+    animation: wigglePantoufles 2s infinite ease-in-out;
+}
+
+/* Animation de la planète */
+@keyframes rotatePlanet {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}
+
+.planet {
+    animation: rotatePlanet 120s infinite linear;
+}
+
+/* Animation des boutons */
+@keyframes glowButton {
+    0% { box-shadow: 0 4px 0 var(--dark-color); }
+    50% { box-shadow: 0 4px 10px var(--primary-color); }
+    100% { box-shadow: 0 4px 0 var(--dark-color); }
+}
+
+.menu-btn:hover {
+    animation: glowButton 1.5s infinite;
+}
+
+/* Transitions entre écrans */
+.screen {
+    transition: opacity 0.5s ease;
+    opacity: 0;
+}
+
+.screen.active {
+    opacity: 1;
+}
+
+/* Animation des choix */
+@keyframes highlightChoice {
+    0% { background-color: var(--light-color); }
+    50% { background-color: var(--primary-color); color: var(--light-color); }
+    100% { background-color: var(--light-color); }
+}
+
+.choice-btn.highlight {
+    animation: highlightChoice 0.5s;
+}
+
+/* Animation des conséquences */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.consequence-text p {
+    animation: fadeInUp 0.8s forwards;
+    opacity: 0;
+}
+
+/* Animation des statistiques */
+@keyframes updateStat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.stat-fill.updating {
+    animation: updateStat 0.5s;
+}
+
+/* Animation du jour qui passe */
+@keyframes dayChange {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+#day-counter.changing {
+    animation: dayChange 1s;
+}
+
+/* Animation des événements sur la planète */
+@keyframes popEvent {
+    0% { transform: scale(0); opacity: 0; }
+    70% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.planet-event {
+    animation: popEvent 0.5s forwards;
+}
+
+/* Animation du menu pause */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s forwards;
+}
+
+/* Animation des notifications */
+@keyframes slideInNotification {
+    0% { transform: translateY(-50px); opacity: 0; }
+    10% { transform: translateY(0); opacity: 1; }
+    90% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-50px); opacity: 0; }
+}
+
+.notification {
+    animation: slideInNotification 3s forwards;
+}
