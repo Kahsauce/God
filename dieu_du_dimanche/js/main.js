@@ -176,7 +176,7 @@ function handleDivineChoice(choiceId) {
     godManager.addXP(XP_PER_CHOICE);
     
     // Affiche les conséquences immédiates
-    ui.displayConsequences(result.consequences.immediate);
+    ui.displayConsequences(result.consequences.immediate, result.choice.visual);
     ui.showScreen('consequence');
 
     // Vérifie la quête en cours
